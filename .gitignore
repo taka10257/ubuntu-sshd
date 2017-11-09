@@ -1,0 +1,6 @@
+# for mac
+.DS_store
+
+# for Intellij IDEA
+.idea/
+*.iml
