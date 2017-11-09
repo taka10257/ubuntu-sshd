@@ -21,6 +21,7 @@ $ docker run --rm -d -P --name ubuntu_sample ubuntu_sshd:16.04
 $ docker port ubuntu_sample 22
   0.0.0.0:49154
 
+$ ssh-keygen -R [localhost]:49154
 $ ssh root@localhost -p 49154
 # The password is `root`
 root@test_sshd $
