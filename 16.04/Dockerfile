@@ -15,4 +15,7 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 EXPOSE 22
 
+# for nginx
+EXPOSE 80
+
 CMD    ["/usr/sbin/sshd", "-D"]
