@@ -16,13 +16,27 @@ Dockerized SSH service, built on top of [official Ubuntu](https://registry.hub.d
 ## Run example
 
 ```bash
-$ docker build -t ubuntu_sshd:16.04 ./16.04
-$ docker run --rm -d -P --name ubuntu_sample ubuntu_sshd:16.04
-$ docker port ubuntu_sample 22
-  0.0.0.0:49154
+# create image
+docker build -t ubuntu_sshd:16.04 ./16.04
+```
 
-$ ssh-keygen -R [localhost]:49154
-$ ssh root@localhost -p 49154
+```bash
+# create container
+docker run -d -P --name ubuntu_sample -p 2323:22 -p 3010:80 ubuntu_sshd:16.04
+#docker run --rm -d -P --name ubuntu_sample -p 2323:22 -p 3010:80 ubuntu_sshd:16.04
+docker port ubuntu_sample 22
+  0.0.0.0:2323
+```
+
+```bash
+# remove known_hosts
+# sed -i '/localhost/d' ~/.ssh/known_hosts
+ssh-keygen -R [localhost]:2323
+```
+
+```bash
+# ssh access
+ssh root@localhost -p 2323
 # The password is `root`
 root@test_sshd $
 ```
