@@ -13,8 +13,10 @@ RUN echo 'root:root' |chpasswd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
-
 # タイムゾーンの変更
+RUN apt-get install -y tzdata
+
+#ENV TZ America/New_York
 ENV TZ Asia/Tokyo
 #ENV TZ America/Chicago
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
