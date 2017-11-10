@@ -2,6 +2,9 @@
 
 Dockerized SSH service, built on top of [official Ubuntu](https://registry.hub.docker.com/_/ubuntu/) images.
 
+## 注意事項
+ - 16.04しかメンテしてません
+
 ## reference
  - https://github.com/rastasheep/ubuntu-sshd
 
